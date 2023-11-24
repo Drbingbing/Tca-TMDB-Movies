@@ -13,7 +13,7 @@ extension View {
     public func upcomingTab() -> some View {
         self.tabItem {
             VStack {
-                Image(uiImage: UIImage(named: "porn")!.asTabBar())
+                Image(uiImage: UIImage(named: "movies")!.asTabBar())
                 Text("Upcoming")
             }
         }
@@ -23,7 +23,7 @@ extension View {
         self.tabItem {
             VStack {
                 Image(uiImage: UIImage(named: "tv")!.asTabBar())
-                Text("Upcoming")
+                Text("TVs")
             }
         }
     }
@@ -32,7 +32,7 @@ extension View {
         self.tabItem {
             VStack {
                 Image(uiImage: UIImage(named: "magnifier")!.asTabBar())
-                Text("Upcoming")
+                Text("Search")
             }
         }
     }
@@ -41,7 +41,7 @@ extension View {
         self.tabItem {
             VStack {
                 Image(uiImage: UIImage(named: "actor")!.asTabBar())
-                Text("Upcoming")
+                Text("Actors")
             }
         }
     }

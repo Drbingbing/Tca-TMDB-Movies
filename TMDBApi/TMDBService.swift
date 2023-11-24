@@ -24,7 +24,11 @@ public struct TMDBService: TMDBServiceProtocol {
         return TMDBService(serverConfig: serverConfig, oauthToken: oauthToken)
     }
     
-    public func upcomingMovies() async throws -> [Movie] {
-        try await request(.upcoming, query: [:])
+    public func upcomingMovies(page: Int) async throws -> MovieEnvelope {
+        try await request(.upcoming, query: ["page": page])
+    }
+    
+    public func popularTvShows(page: Int) async throws -> TvShowEnvelope {
+        try await request(.popularTvShows, query: ["page": page])
     }
 }

@@ -26,10 +26,10 @@ struct RootTabBarView: View {
                         UpcomingMoviesView()
                             .upcomingTab()
                     case .actors:
-                        Text("actors")
+                        Text("actor")
                             .actorTab()
                     case .tv:
-                        Text("tv")
+                        TvShowsView()
                             .tvTab()
                     case .search:
                         Text("search")

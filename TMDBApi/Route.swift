@@ -10,11 +10,14 @@ import Foundation
 enum Route {
     
     case upcoming
+    case popularTvShows
     
     internal var requestProperties: (method: Method, path: String) {
         switch self {
         case .upcoming:
             return (.GET, "/3/movie/upcoming")
+        case .popularTvShows:
+            return (.GET, "/3/tv/popular")
         }
     }
 }

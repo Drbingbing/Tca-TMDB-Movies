@@ -1,60 +1,57 @@
 //
-//  UpcomingMoviesView.swift
+//  TvShowsView.swift
 //  CombineTMDBMovie
 //
-//  Created by 鍾秉辰 on 2023/11/21.
+//  Created by 鍾秉辰 on 2023/11/24.
 //
 
-import Foundation
-import ComposableArchitecture
-import TMDBLibrary
 import SwiftUI
+import TMDBLibrary
+import ComposableArchitecture
 
-struct UpcomingMoviesView: View {
+struct TvShowsView: View {
     
-    var store: StoreOf<UpcomingMoviesFeature>
+    var store: StoreOf<TvShowsFeature>
     
     init() {
-        store = Store(
-            initialState: UpcomingMoviesFeature.State(),
-            reducer: { UpcomingMoviesFeature() }
-        )
+        store = Store(initialState: TvShowsFeature.State()) { TvShowsFeature() }
     }
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 12) {
-                    WithViewStore(store, observe: \.movies) { viewStore in
-                        ForEach(viewStore.state, id: \.movieID) { movie in
+                    WithViewStore(store, observe: \.tvShows) { viewStore in
+                        ForEach(viewStore.state, id: \.tvID) { tvShow in
                             PreviewCardView(
-                                image: movie.posterPath,
-                                name: movie.title
+                                image: tvShow.posterPath,
+                                name: tvShow.title
                             )
                             .asButton()
                             .buttonStyle(.scaled)
-                            .id(movie.movieID)
+                            .id(tvShow.tvID)
                             .onAppear {
-                                store.send(.cellWillDisplay(movie))
+                                print("id: \(tvShow.tvID)")
+                                store.send(.cellWillDisplay(tvShow))
                             }
                         }
                     }
                 }
                 .padding(20)
-                WithViewStore(store, observe: \.isLoadingMovies) { viewStore in
+                WithViewStore(store, observe: \.isLoadingTvShows) { viewStore in
                     if viewStore.state {
-                        ProgressView()
-                            .frame(width: 28, height: 28)
+                        ProgressView().frame(width: 28, height: 28)
                     }
                 }
             }
-            .navigationTitle(Text("Upcoming Movies"))
+            .navigationTitle(Text("TVs"))
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 store.send(.onAppear)
             }
         }
     }
+    
     
     private var columns: [GridItem] {
         [
@@ -64,6 +61,7 @@ struct UpcomingMoviesView: View {
     }
 }
 
+
 #Preview {
-    UpcomingMoviesView()
+    TvShowsView()
 }

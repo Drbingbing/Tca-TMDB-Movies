@@ -16,7 +16,11 @@ public protocol TMDBServiceProtocol {
     
     func login(_ oauthToken: OauthTokenAuthProtocol) -> Self
     
-    func upcomingMovies() async throws -> [Movie]
+    /// Get a list of movies that are being released soon.
+    func upcomingMovies(page: Int) async throws -> MovieEnvelope
+    
+    /// Get a list of TV shows ordered by popularity
+    func popularTvShows(page: Int) async throws -> TvShowEnvelope
 }
 
 extension TMDBServiceProtocol {

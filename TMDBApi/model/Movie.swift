@@ -7,6 +7,20 @@
 
 import Foundation
 
+public struct MovieEnvelope: Decodable {
+    
+    public let page: Int
+    public let totalPages: Int
+    public let totalResults: Int
+    public let results: [Movie]
+    
+    private enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
 public struct Movie: Hashable, Decodable {
     
     private let id = UUID()
