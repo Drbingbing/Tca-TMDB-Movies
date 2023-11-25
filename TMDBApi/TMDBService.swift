@@ -28,7 +28,24 @@ public struct TMDBService: TMDBServiceProtocol {
         try await request(.upcoming, query: ["page": page])
     }
     
+    public func nowPlayingMovies(page: Int) async throws -> MovieEnvelope {
+        try await request(.nowPlaying, query: ["page": page])
+    }
+    
     public func popularTvShows(page: Int) async throws -> TvShowEnvelope {
         try await request(.popularTvShows, query: ["page": page])
+    }
+    
+    public func topMovies(page: Int) async throws -> MovieEnvelope {
+        try await request(.topMovies, query: ["page": page])
+    }
+    
+    public func genres() async throws -> [Genre] {
+        struct GenreResult: Decodable {
+            public let genres: [Genre]
+        }
+        
+        let result: GenreResult = try await request(.genres, query: [:])
+        return result.genres
     }
 }

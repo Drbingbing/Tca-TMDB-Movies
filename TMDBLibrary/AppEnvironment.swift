@@ -30,12 +30,14 @@ public struct AppEnvironment {
     
     public static func replaceCurrentEnvironment(
         apiService: TMDBServiceProtocol = AppEnvironment.current.apiService,
-        posterBaseURL: String = AppEnvironment.current.posterBaseURL
+        posterBaseURL: String = AppEnvironment.current.posterBaseURL,
+        movieGenres: [Genre] = AppEnvironment.current.movieGenres
     ) {
         replaceCurrentEnvironment(
             Environment(
                 apiService: apiService,
-                posterBaseURL: posterBaseURL
+                posterBaseURL: posterBaseURL,
+                movieGenres: movieGenres
             )
         )
     }

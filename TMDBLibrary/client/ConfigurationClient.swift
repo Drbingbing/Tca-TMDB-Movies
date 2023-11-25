@@ -22,5 +22,6 @@ extension DependencyValues {
     
     public var posterBaseURL: String {
         get { self[ConfigurationClient.self].baseURL }
+        set { self[ConfigurationClient.self].baseURL = newValue }
     }
 }

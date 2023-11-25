@@ -15,11 +15,16 @@ public struct Environment {
     
     public let posterBaseURL: String
     
+    /// A Collections of movie's genres
+    public let movieGenres: [Genre]
+    
     init(
         apiService: TMDBServiceProtocol = TMDBService(),
-        posterBaseURL: String = "https://image.tmdb.org/t/p/w185"
+        posterBaseURL: String = "https://image.tmdb.org/t/p/w185",
+        movieGenres: [Genre] = []
     ) {
         self.apiService = apiService
         self.posterBaseURL = posterBaseURL
+        self.movieGenres = movieGenres
     }
 }

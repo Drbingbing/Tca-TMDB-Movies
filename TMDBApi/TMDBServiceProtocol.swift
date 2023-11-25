@@ -19,8 +19,17 @@ public protocol TMDBServiceProtocol {
     /// Get a list of movies that are being released soon.
     func upcomingMovies(page: Int) async throws -> MovieEnvelope
     
+    /// Get a list of movies that are currently in theatres.
+    func nowPlayingMovies(page: Int) async throws -> MovieEnvelope
+    
+    /// Get a list of movies ordered by rating.
+    func topMovies(page: Int) async throws -> MovieEnvelope
+    
     /// Get a list of TV shows ordered by popularity
     func popularTvShows(page: Int) async throws -> TvShowEnvelope
+    
+    /// Get the list of official genres for movies.
+    func genres() async throws -> [Genre]
 }
 
 extension TMDBServiceProtocol {

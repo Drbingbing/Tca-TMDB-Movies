@@ -10,29 +10,20 @@ import SwiftUI
 
 extension View {
     
-    public func upcomingTab() -> some View {
+    public func homeTab() -> some View {
         self.tabItem {
             VStack {
-                Image(uiImage: UIImage(named: "movies")!.asTabBar())
-                Text("Upcoming")
+                Image(uiImage: UIImage(named: "house")!.asTabBar())
+                Text("Home")
             }
         }
     }
     
-    public func tvTab() -> some View {
+    public func trendingTab() -> some View {
         self.tabItem {
             VStack {
-                Image(uiImage: UIImage(named: "tv")!.asTabBar())
-                Text("TVs")
-            }
-        }
-    }
-    
-    public func searchTab() -> some View {
-        self.tabItem {
-            VStack {
-                Image(uiImage: UIImage(named: "magnifier")!.asTabBar())
-                Text("Search")
+                Image(uiImage: UIImage(named: "trending")!.asTabBar())
+                Text("Trending")
             }
         }
     }

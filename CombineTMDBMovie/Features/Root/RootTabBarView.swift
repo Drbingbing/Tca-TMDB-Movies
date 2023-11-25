@@ -22,18 +22,15 @@ struct RootTabBarView: View {
             WithViewStore(store, observe: { $0.views }) { viewStore in
                 ForEach(viewStore.state, id: \.hashValue) { viewData in
                     switch viewData {
-                    case .upcoming:
-                        UpcomingMoviesView()
-                            .upcomingTab()
+                    case .home:
+                        HomeViews()
+                            .homeTab()
+                    case .trending:
+                        Text("trending")
+                            .trendingTab()
                     case .actors:
-                        Text("actor")
+                        Text("actors")
                             .actorTab()
-                    case .tv:
-                        TvShowsView()
-                            .tvTab()
-                    case .search:
-                        Text("search")
-                            .searchTab()
                     }
                 }
             }

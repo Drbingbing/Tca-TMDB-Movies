@@ -7,21 +7,20 @@
 
 import Foundation
 import ComposableArchitecture
+import TMDBApi
 
 public typealias RootViewIndex = Int
 
 public enum RootViewData {
-    case upcoming
-    case tv
+    case home
+    case trending
     case actors
-    case search
 }
 
 public enum TabBarItem: Equatable {
-    case upcoming(RootViewIndex)
-    case tv(RootViewIndex)
+    case home(RootViewIndex)
+    case trending(RootViewIndex)
     case actors(RootViewIndex)
-    case search(RootViewIndex)
 }
 
 public struct TabBarItemsData: Equatable {
@@ -35,6 +34,8 @@ public struct TabBarItemsData: Equatable {
 
 
 public struct RootTabBarFeature: Reducer {
+    
+    @Dependency(\.genres) var genresClient
     
     public init() {}
     
@@ -53,6 +54,7 @@ public struct RootTabBarFeature: Reducer {
     
     public enum Action {
         case onAppear
+        case genresResponse([Genre])
     }
     
     public var body: some ReducerOf<Self> {
@@ -61,6 +63,12 @@ public struct RootTabBarFeature: Reducer {
             case .onAppear:
                 state.views = generateStandardView()
                 state.tabBarData = tabData()
+                return .run { send in
+                    let genres = try await genresClient.movieGenres()
+                    return await send(.genresResponse(genres))
+                }
+            case let .genresResponse(genres):
+                AppEnvironment.replaceCurrentEnvironment(movieGenres: genres)
                 return .none
             }
         }
@@ -70,15 +78,14 @@ public struct RootTabBarFeature: Reducer {
 
 
 private func generateStandardView() -> [RootViewData] {
-    return [.upcoming, .tv, .search, .actors]
+    return [.home, .trending, .actors]
 }
 
 private func tabData() -> TabBarItemsData {
     let items: [TabBarItem] = [
-        .upcoming(0),
-        .tv(1),
-        .search(2),
-        .actors(3)
+        .home(0),
+        .trending(1),
+        .actors(2)
     ]
     
     return TabBarItemsData(items: items)

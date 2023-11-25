@@ -11,6 +11,8 @@ import ComposableArchitecture
 
 public struct MoviesClient {
     public let upcomingMovies: (Int) async throws -> [Movie]
+    public let nowPlaying: (Int) async throws -> [Movie]
+    public let tops: (Int) async throws -> [Movie]
 }
 
 extension MoviesClient: DependencyKey {
@@ -20,6 +22,14 @@ extension MoviesClient: DependencyKey {
         return MoviesClient(
             upcomingMovies: { page in
                 let envelope = try await apiService.upcomingMovies(page: page)
+                return envelope.results
+            },
+            nowPlaying: { page in
+                let envelope = try await apiService.nowPlayingMovies(page: page)
+                return envelope.results
+            },
+            tops: { page in
+                let envelope = try await apiService.topMovies(page: page)
                 return envelope.results
             }
         )
@@ -33,6 +43,32 @@ extension MoviesClient: DependencyKey {
                         movieID: 695721,
                         overview: "",
                         title: "The Hunger Games: The Ballad of Songbirds & Snakes",
+                        genreIDs: [27],
+                        posterPath: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
+                        releaseDate: ""
+                    )
+                ]
+            },
+            nowPlaying: { _ in
+                [
+                    Movie(
+                        movieID: 695721,
+                        overview: "",
+                        title: "The Hunger Games: The Ballad of Songbirds & Snakes",
+                        genreIDs: [27],
+                        posterPath: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
+                        releaseDate: ""
+                    )
+                ]
+            },
+            tops: { _ in
+                [
+                    Movie(
+                        movieID: 695721,
+                        overview: "",
+                        title: "The Hunger Games: The Ballad of Songbirds & Snakes",
+                        originalTitle: "The Hunger Games: The Ballad of Songbirds & Snakes",
+                        genreIDs: [27],
                         posterPath: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
                         releaseDate: ""
                     )
