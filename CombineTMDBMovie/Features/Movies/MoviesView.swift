@@ -11,7 +11,7 @@ struct MoviesView: View {
     
     var body: some View {
         
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             RecommendMovieView {
                 PlayButton(action: {})
                 AddFavoriteButton(action: {})

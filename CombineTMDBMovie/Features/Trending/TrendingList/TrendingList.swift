@@ -30,7 +30,7 @@ struct TrendingList: View {
     
     var body: some View {
         ScrollViewReader { proxy in
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVStack {
                     WithViewStore(store, observe: \.upcomingMovies) { viewStore in
                         ForEach(viewStore.state, id: \.movieID) { movie in

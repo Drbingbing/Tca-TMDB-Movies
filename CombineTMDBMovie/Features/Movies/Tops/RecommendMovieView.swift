@@ -33,6 +33,7 @@ struct RecommendMovieView<Actions: View>: View {
                         KFImage(
                             URL(string: posterBaseURL + posterPath)
                         )
+                        .fade(duration: 0.2)
                         .placeholder { _ in
                             Color.clear
                                 .frame(minWidth: 400, minHeight: 200)
@@ -49,7 +50,7 @@ struct RecommendMovieView<Actions: View>: View {
                     )
                 } else {
                     ProgressView()
-                        .frame(minWidth: 200, minHeight: 350)
+                        .frame(maxWidth: .infinity, minHeight: 350)
                 }
             }
         }
