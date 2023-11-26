@@ -20,7 +20,7 @@ private struct SectionNamableModifier: ViewModifier {
             text
                 .font(.system(size: 16, weight: .medium, design: .rounded))
                 .padding(.horizontal, 10)
-                .foregroundStyle(.primaryGray)
+                .foregroundStyle(.white)
             content
         }
         .padding(.bottom, 4)

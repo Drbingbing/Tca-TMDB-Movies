@@ -1,5 +1,5 @@
 //
-//  TopMovieView.swift
+//  RecommendMovieView.swift
 //  CombineTMDBMovie
 //
 //  Created by Bing Bing on 2023/11/25.
@@ -10,16 +10,16 @@ import TMDBLibrary
 import Kingfisher
 import ComposableArchitecture
 
-struct TopMovieView<Actions: View>: View {
+struct RecommendMovieView<Actions: View>: View {
     
     @Dependency(\.genres) var genres
     
     var actions: Actions
-    var store: StoreOf<TopMoviesFeature>
+    var store: StoreOf<RecommendMovieFeature>
     
     init(@ViewBuilder actions: () -> Actions) {
         self.actions = actions()
-        store = Store(initialState: TopMoviesFeature.State()) { TopMoviesFeature() }
+        store = Store(initialState: RecommendMovieFeature.State()) { RecommendMovieFeature() }
         store.send(.viewInit)
     }
     
@@ -128,7 +128,7 @@ private struct EpisodeInfoView<Buttons: View>: View {
 }
 
 #Preview {
-    TopMovieView {
+    RecommendMovieView {
         PlayButton(action: {})
         AddFavoriteButton(action: {})
     }

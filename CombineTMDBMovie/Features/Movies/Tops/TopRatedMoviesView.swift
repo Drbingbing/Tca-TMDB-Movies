@@ -1,20 +1,20 @@
 //
-//  NowPlayingMoviesView.swift
+//  TopRatedMoviesView.swift
 //  CombineTMDBMovie
 //
-//  Created by Bing Bing on 2023/11/25.
+//  Created by Bing Bing on 2023/11/26.
 //
 
 import SwiftUI
 import TMDBLibrary
 import ComposableArchitecture
 
-struct NowPlayingMoviesView: View {
+struct TopRatedMoviesView: View {
     
-    var store: StoreOf<NowPlayingFeature>
+    var store: StoreOf<TopRatedMoviesFeature>
     
     init() {
-        store = Store(initialState: NowPlayingFeature.State()) { NowPlayingFeature() }
+        store = Store(initialState: TopRatedMoviesFeature.State()) { TopRatedMoviesFeature() }
         store.send(.viewInit)
     }
     
@@ -42,5 +42,5 @@ struct NowPlayingMoviesView: View {
 }
 
 #Preview {
-    NowPlayingMoviesView()
+    TopRatedMoviesView()
 }

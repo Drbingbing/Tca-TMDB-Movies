@@ -12,7 +12,7 @@ struct MoviesView: View {
     var body: some View {
         
         ScrollView {
-            TopMovieView {
+            RecommendMovieView {
                 PlayButton(action: {})
                 AddFavoriteButton(action: {})
             }
@@ -23,11 +23,16 @@ struct MoviesView: View {
             
             NowPlayingMoviesView()
                 .asSection(Text("Now playing"))
+            
+            TopRatedMoviesView()
+                .asSection(Text("Top Rated"))
+            
+            Color.clear.frame(height: 20)
         }
         
     }
 }
 
 #Preview {
-    MoviesView()
+    RootTabBarView()
 }

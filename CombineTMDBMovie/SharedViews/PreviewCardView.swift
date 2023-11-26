@@ -23,14 +23,15 @@ struct PreviewCardView: View {
             if let image = image {
                 KFImage(URL(string: posterBaseURL + image))
                     .placeholder { _ in
-                        ProgressView()
+                        Color.blackChocolate
+                            .background(.regularMaterial)
                             .frame(minWidth: 80, minHeight: 160)
                     }
                     .resizable()
             }
         }
         .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .clipShape(RoundedRectangle(cornerRadius: 4))
     }
 }
 

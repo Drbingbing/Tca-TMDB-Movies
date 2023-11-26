@@ -1,24 +1,22 @@
 //
-//  NowPlayingFeature.swift
+//  RecommendMovieFeature.swift
 //  TMDBLibrary
 //
 //  Created by Bing Bing on 2023/11/25.
 //
 
 import Foundation
-import TMDBApi
 import ComposableArchitecture
+import TMDBApi
 
-public struct NowPlayingFeature: Reducer {
+public struct RecommendMovieFeature: Reducer {
     
     @Dependency(\.movies) var moviesClient
     
     public init() {}
     
     public struct State: Equatable {
-        public var movies: [Movie] = []
-        public var nextPage: Int? = nil
-        public var isLoadingMovies: Bool = false
+        public var movie: Movie?
         
         public init() {}
     }
@@ -26,7 +24,6 @@ public struct NowPlayingFeature: Reducer {
     public enum Action {
         case viewInit
         case moviesResponse([Movie])
-        case cellWillDisplay(Movie)
     }
     
     public var body: some Reducer<State, Action> {
@@ -40,26 +37,14 @@ public struct NowPlayingFeature: Reducer {
                 await fetchMovies(page: 1, send: send)
             }
         case let .moviesResponse(movies):
-            state.movies.append(contentsOf: movies)
-            state.nextPage = (state.nextPage ?? 1) + 1
-            state.isLoadingMovies = false
-            return .none
-        case let .cellWillDisplay(movie):
-            if let nextPage = state.nextPage,
-               !state.isLoadingMovies,
-               canLoadNextPage(trigger: movie, totalItems: state.movies) {
-                state.isLoadingMovies = true
-                return .run { send in
-                    await fetchMovies(page: nextPage, send: send)
-                }
-            }
+            state.movie = movies.first
             return .none
         }
     }
     
     private func fetchMovies(page: Int, send: Send<Action>) async {
         do {
-            let movies = try await moviesClient.nowPlaying(page)
+            let movies = try await moviesClient.tops(page)
             return await send(.moviesResponse(movies))
         } catch {
             return await send(.moviesResponse([]))

@@ -1,22 +1,24 @@
 //
-//  TopMoviesFeature.swift
+//  TopRatedMoviesFeature.swift
 //  TMDBLibrary
 //
-//  Created by Bing Bing on 2023/11/25.
+//  Created by Bing Bing on 2023/11/26.
 //
 
 import Foundation
 import ComposableArchitecture
 import TMDBApi
 
-public struct TopMoviesFeature: Reducer {
+public struct TopRatedMoviesFeature: Reducer {
     
     @Dependency(\.movies) var moviesClient
     
     public init() {}
     
     public struct State: Equatable {
-        public var movie: Movie?
+        public var movies: [Movie] = []
+        public var nextPage: Int? = nil
+        public var isLoadingMovies: Bool = false
         
         public init() {}
     }
@@ -24,6 +26,7 @@ public struct TopMoviesFeature: Reducer {
     public enum Action {
         case viewInit
         case moviesResponse([Movie])
+        case cellWillDisplay(Movie)
     }
     
     public var body: some Reducer<State, Action> {
@@ -37,7 +40,19 @@ public struct TopMoviesFeature: Reducer {
                 await fetchMovies(page: 1, send: send)
             }
         case let .moviesResponse(movies):
-            state.movie = movies.first
+            state.movies.append(contentsOf: movies)
+            state.nextPage = (state.nextPage ?? 1) + 1
+            state.isLoadingMovies = false
+            return .none
+        case let .cellWillDisplay(movie):
+            if let nextPage = state.nextPage,
+               !state.isLoadingMovies,
+               canLoadNextPage(trigger: movie, totalItems: state.movies) {
+                state.isLoadingMovies = true
+                return .run { send in
+                    await fetchMovies(page: nextPage, send: send)
+                }
+            }
             return .none
         }
     }

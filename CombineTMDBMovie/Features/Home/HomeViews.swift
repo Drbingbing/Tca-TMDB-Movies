@@ -16,10 +16,14 @@ struct HomeViews: View {
             HomeNavigationHeader()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.regularMaterial)
+        .background {
+            Color.blackChocolate
+                .overlay(.regularMaterial)
+        }
+        
     }
 }
 
 #Preview {
-    HomeViews()
+    RootTabBarView()
 }

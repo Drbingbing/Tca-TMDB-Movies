@@ -38,6 +38,7 @@ struct RootTabBarView: View {
         .onAppear {
             store.send(.onAppear)
         }
+        .environment(\.colorScheme, .dark)
     }
 }
 

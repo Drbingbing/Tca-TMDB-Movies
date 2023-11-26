@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import TMDBLibrary
 
 struct HomeNavigationHeader: View {
+    
+    
+    
     var body: some View {
         VStack(spacing: 12) {
             HStack(spacing: 20) {
@@ -15,46 +19,25 @@ struct HomeNavigationHeader: View {
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
                 Image("chrome-cast")
-                    .resizable()
-                    .frame(width: 26, height: 26)
+                    .asThumbnail()
                     .button(.scaled)
                 Image("magnifying-glass")
-                    .resizable()
-                    .frame(width: 26, height: 26)
+                    .asThumbnail()
                     .button(.scaled)
             }
-            HStack {
-                Text("節目")
-                    .homeButtonStlye()
-                Text("電影")
-                    .homeButtonStlye()
-                Text("類別")
-                    .homeButtonStlye()
-                Spacer()
-            }
+            
+            HomeSortPagerView()
         }
         .padding(.horizontal, 12)
         .padding(.bottom, 8)
-        .background(.regularMaterial)
-    }
-}
-
-private extension View {
-    
-    func homeButtonStlye() -> some View {
-        self
-            .foregroundStyle(.sonicSilver)
-            .font(.system(size: 12))
-            .padding(.horizontal, 10)
-            .padding(.vertical, 4)
-            .overlay {
-                Capsule()
-                    .stroke(lineWidth: 1)
-                    .fill(.sonicSilver)
-            }
+        .background {
+            Color.blackChocolate
+                .overlay(.regularMaterial)
+        }
     }
 }
 
 #Preview {
     HomeNavigationHeader()
+        .environment(\.colorScheme, .dark)
 }

@@ -29,6 +29,9 @@ struct UpcomingMoviesView: View {
                         PreviewCardView(image: movie.posterPath)
                             .frame(width: 110)
                             .button(.scaled)
+                            .onAppear {
+                                store.send(.cellWillDisplay(movie))
+                            }
                     }
                 }
             }
