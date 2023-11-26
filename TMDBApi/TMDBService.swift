@@ -25,7 +25,21 @@ public struct TMDBService: TMDBServiceProtocol {
     }
     
     public func upcomingMovies(page: Int) async throws -> MovieEnvelope {
-        try await request(.upcoming, query: ["page": page])
+        /**
+         
+         https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=zh-TW&page=1&primary_release_year=2023&region=TW&release_date.gte=2023-11-01&sort_by=popularity.desc
+         
+         */
+        let query: [String: Any] = [
+            "page": page,
+            "include_adult": false,
+            "include_video": false,
+            "primary_release_year": 2023,
+            "region": "TW",
+            "release_date.gte": "2023-\(Calendar.current.component(.month, from: Date()))-01",
+            "sort_by": "popularity.desc"
+        ]
+        return try await request(.upcoming, query: query)
     }
     
     public func nowPlayingMovies(page: Int) async throws -> MovieEnvelope {
@@ -47,5 +61,9 @@ public struct TMDBService: TMDBServiceProtocol {
         
         let result: GenreResult = try await request(.genres, query: [:])
         return result.genres
+    }
+    
+    public func trendingMovies() async throws -> MovieEnvelope {
+        try await request(.trendingMovies("day"), query: [:])
     }
 }

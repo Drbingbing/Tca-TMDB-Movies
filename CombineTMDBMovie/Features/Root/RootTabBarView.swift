@@ -26,7 +26,7 @@ struct RootTabBarView: View {
                         HomeViews()
                             .homeTab()
                     case .trending:
-                        Text("trending")
+                        TrendingView()
                             .trendingTab()
                     case .actors:
                         Text("actors")

@@ -35,7 +35,7 @@ struct AddFavoriteButton<Background: ShapeStyle>: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 6))
         .foregroundStyle(.white)
-        .button(.scaled, tap: action)
+        .button(action: action, style: .scaled)
     }
 }
 

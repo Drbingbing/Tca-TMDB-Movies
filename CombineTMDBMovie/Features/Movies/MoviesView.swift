@@ -19,13 +19,13 @@ struct MoviesView: View {
             .onTapGesture {}
             
             UpcomingMoviesView()
-                .asSection(Text("Upcoming"))
+                .asSection(Text("即將上映"))
             
             NowPlayingMoviesView()
-                .asSection(Text("Now playing"))
+                .asSection(Text("現正熱播"))
             
             TopRatedMoviesView()
-                .asSection(Text("Top Rated"))
+                .asSection(Text("最高評分"))
             
             Color.clear.frame(height: 20)
         }

@@ -1,19 +1,20 @@
 //
-//  HomeNavigationHeader.swift
+//  TrendingHeader.swift
 //  CombineTMDBMovie
 //
-//  Created by Bing Bing on 2023/11/25.
+//  Created by Bing Bing on 2023/11/26.
 //
 
 import SwiftUI
 import TMDBLibrary
 
-struct HomeNavigationHeader: View {
+struct TrendingHeader: View {
+    @Binding var selectedSort: String
     
     var body: some View {
         VStack(spacing: 12) {
             HStack(spacing: 20) {
-                Text("講話大舌頭，歡迎你")
+                Text("哈燒新榜")
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
                 Image("chrome-cast")
@@ -24,7 +25,7 @@ struct HomeNavigationHeader: View {
                     .button(style: .scaled)
             }
             
-            HomeSortPagerView()
+            TrendingSortPagersView(selectedSort: $selectedSort)
         }
         .padding(.horizontal, 12)
         .padding(.bottom, 8)
@@ -36,6 +37,6 @@ struct HomeNavigationHeader: View {
 }
 
 #Preview {
-    HomeNavigationHeader()
+    TrendingView()
         .environment(\.colorScheme, .dark)
 }

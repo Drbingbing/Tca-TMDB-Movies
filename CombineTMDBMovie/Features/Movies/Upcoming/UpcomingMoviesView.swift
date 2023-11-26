@@ -28,7 +28,7 @@ struct UpcomingMoviesView: View {
                     ForEach(viewStore.state, id: \.movieID) { movie in
                         PreviewCardView(image: movie.posterPath)
                             .frame(width: 110)
-                            .button(.scaled)
+                            .button(style: .scaled)
                             .onAppear {
                                 store.send(.cellWillDisplay(movie))
                             }

@@ -31,7 +31,7 @@ struct PlayButton<Background: ShapeStyle>: View {
         .background(background)
         .clipShape(RoundedRectangle(cornerRadius: 6))
         .foregroundStyle(.primaryGray)
-        .button(.scaled, tap: action)
+        .button(action: action, style: .scaled)
     }
 }
 

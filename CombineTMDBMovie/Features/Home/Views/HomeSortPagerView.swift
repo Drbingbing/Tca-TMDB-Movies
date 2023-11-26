@@ -17,9 +17,10 @@ struct HomeSortPagerView: View {
             if !selectedSort.isEmpty {
                 Image("close")
                     .asSortPager()
-                    .button(.scaled) {
-                        selectedSort = ""
-                    }
+                    .button(
+                        action: { selectedSort = "" },
+                        style: .scaled
+                    )
             }
             if selectedSort.isEmpty || selectedSort == "節目" {
                 SortPagerView(
@@ -78,7 +79,7 @@ private struct SortPagerView<Background: ShapeStyle>: View {
             }
         }
         .asSortPager(background: background)
-        .button(.scaled, tap: onTap)
+        .button(action: onTap, style: .scaled)
     }
 }
 

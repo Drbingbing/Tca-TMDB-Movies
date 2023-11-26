@@ -14,7 +14,7 @@ extension View {
         self.tabItem {
             VStack {
                 Image(uiImage: UIImage(named: "house")!.asTabBar())
-                Text("Home")
+                Text("首頁")
             }
         }
     }
@@ -23,7 +23,7 @@ extension View {
         self.tabItem {
             VStack {
                 Image(uiImage: UIImage(named: "trending")!.asTabBar())
-                Text("Trending")
+                Text("熱門")
             }
         }
     }
@@ -32,7 +32,7 @@ extension View {
         self.tabItem {
             VStack {
                 Image(uiImage: UIImage(named: "actor")!.asTabBar())
-                Text("Actors")
+                Text("演員")
             }
         }
     }

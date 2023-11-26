@@ -40,37 +40,42 @@ extension MoviesClient: DependencyKey {
             upcomingMovies: { _ in
                 [
                     Movie(
-                        movieID: 695721,
-                        overview: "",
-                        title: "The Hunger Games: The Ballad of Songbirds & Snakes",
-                        genreIDs: [27],
-                        posterPath: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
-                        releaseDate: ""
+                        movieID: 872585,
+                        overview: "克里斯多夫諾蘭自編自導的《奧本海默》是一部用IMAX攝影機拍攝的史詩驚悚片，觀眾將看到一個謎一般的男人是如何陷入一個自相矛盾的困境，他為了拯救這個世界，必須先毀滅它。",
+                        title: "奧本海默",
+                        originalTitle: "Oppenheimer",
+                        genreIDs: [18, 36],
+                        posterPath: "/7wYG2Rowz7TwOosomGBvuqLAfe5.jpg",
+                        backdropPath: "/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
+                        releaseDate: "2023-07-19"
                     )
                 ]
             },
             nowPlaying: { _ in
                 [
                     Movie(
-                        movieID: 695721,
-                        overview: "",
-                        title: "The Hunger Games: The Ballad of Songbirds & Snakes",
-                        genreIDs: [27],
-                        posterPath: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
-                        releaseDate: ""
+                        movieID: 872585,
+                        overview: "克里斯多夫諾蘭自編自導的《奧本海默》是一部用IMAX攝影機拍攝的史詩驚悚片，觀眾將看到一個謎一般的男人是如何陷入一個自相矛盾的困境，他為了拯救這個世界，必須先毀滅它。",
+                        title: "奧本海默",
+                        originalTitle: "Oppenheimer",
+                        genreIDs: [18, 36],
+                        posterPath: "/7wYG2Rowz7TwOosomGBvuqLAfe5.jpg",
+                        backdropPath: "/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
+                        releaseDate: "2023-07-19"
                     )
                 ]
             },
             tops: { _ in
                 [
                     Movie(
-                        movieID: 695721,
-                        overview: "",
-                        title: "The Hunger Games: The Ballad of Songbirds & Snakes",
-                        originalTitle: "The Hunger Games: The Ballad of Songbirds & Snakes",
-                        genreIDs: [27],
-                        posterPath: "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
-                        releaseDate: ""
+                        movieID: 872585,
+                        overview: "克里斯多夫諾蘭自編自導的《奧本海默》是一部用IMAX攝影機拍攝的史詩驚悚片，觀眾將看到一個謎一般的男人是如何陷入一個自相矛盾的困境，他為了拯救這個世界，必須先毀滅它。",
+                        title: "奧本海默",
+                        originalTitle: "Oppenheimer",
+                        genreIDs: [18, 36],
+                        posterPath: "/7wYG2Rowz7TwOosomGBvuqLAfe5.jpg",
+                        backdropPath: "/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
+                        releaseDate: "2023-07-19"
                     )
                 ]
             }

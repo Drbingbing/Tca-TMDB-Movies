@@ -30,6 +30,9 @@ public protocol TMDBServiceProtocol {
     
     /// Get the list of official genres for movies.
     func genres() async throws -> [Genre]
+    
+    /// Get the trending movies on TMDB.
+    func trendingMovies() async throws -> MovieEnvelope
 }
 
 extension TMDBServiceProtocol {
@@ -108,7 +111,7 @@ extension TMDBServiceProtocol {
     
     fileprivate var defaultQueryParams: [String: String] {
         var query: [String: String] = [:]
-        query["language"] = "en-US"
+        query["language"] = "zh-TW"
         return query
     }
 }

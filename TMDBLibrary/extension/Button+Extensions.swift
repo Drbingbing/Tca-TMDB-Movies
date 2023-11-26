@@ -9,8 +9,8 @@ import SwiftUI
 
 extension View {
     
-    public func button<S: ButtonStyle>(_ style: S, tap: @escaping () -> Void = {}) -> some View {
-        asButton(tap)
+    public func button<S: ButtonStyle>(action: @escaping () -> Void = {}, style: S) -> some View {
+        asButton(action)
             .buttonStyle(style)
     }
     

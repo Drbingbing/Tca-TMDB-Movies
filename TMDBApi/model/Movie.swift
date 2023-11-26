@@ -30,6 +30,7 @@ public struct Movie: Hashable, Decodable {
     public let title: String
     public let genreIDs: [Int]
     public let posterPath: String?
+    public let backdropPath: String?
     public let releaseDate: String
     public let originalTitle: String
     
@@ -40,12 +41,14 @@ public struct Movie: Hashable, Decodable {
         originalTitle: String = "",
         genreIDs: [Int] = [],
         posterPath: String = "",
+        backdropPath: String = "",
         releaseDate: String = ""
     ) {
         self.movieID = movieID
         self.overview = overview
         self.title = title
         self.posterPath = posterPath
+        self.backdropPath = backdropPath
         self.genreIDs = genreIDs
         self.releaseDate = releaseDate
         self.originalTitle = originalTitle
@@ -57,6 +60,7 @@ public struct Movie: Hashable, Decodable {
         case originalTitle = "original_title"
         case genreIDs = "genre_ids"
         case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
         case releaseDate = "release_date"
     }
 }
