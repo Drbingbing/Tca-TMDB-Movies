@@ -18,6 +18,7 @@ struct HomeViews: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
             Color.richBlack
+                .ignoresSafeArea()
                 .overlay(.regularMaterial)
         }
         
