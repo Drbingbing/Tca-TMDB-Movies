@@ -33,7 +33,10 @@ struct HomeNavigationHeader: View {
                 }
                 Image("magnifying-glass")
                     .asThumbnail()
-                    .button(style: .scaled)
+                    .button(
+                        action: { store.send(.showSearchButtonTapped) },
+                        style: .scaled
+                    )
             }
             
             HomeSortPagerView()
@@ -53,6 +56,15 @@ struct HomeNavigationHeader: View {
             ScreenMirrorView(store: screenMirrorFeature)
                 .presentationDetents([.medium])
                 .presentationBackground(Color.primaryGray)
+                .environment(\.colorScheme, .dark)
+        }
+        .fullScreenCover(
+            store: store.scope(
+                state: \.$searchState,
+                action: { .showSearch($0) }
+            )
+        ) { store in
+            SearchView(store: store)
                 .environment(\.colorScheme, .dark)
         }
     }

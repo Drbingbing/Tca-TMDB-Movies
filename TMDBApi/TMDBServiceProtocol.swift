@@ -36,6 +36,12 @@ public protocol TMDBServiceProtocol {
     
     /// Get a list of people ordered by popularity.
     func popularPeople(page: Int) async throws -> [Person]
+    
+    /// Search for movies by their original, translated and alternative titles.
+    func searchMovie(query: String) async throws -> MovieEnvelope
+    
+    /// Search for people by their name and also known as names.
+    func searchPeople(query: String) async throws -> [Person]
 }
 
 extension TMDBServiceProtocol {

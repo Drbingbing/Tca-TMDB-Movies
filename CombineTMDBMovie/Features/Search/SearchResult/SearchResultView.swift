@@ -6,10 +6,23 @@
 //
 
 import SwiftUI
+import TMDBLibrary
+import ComposableArchitecture
 
 struct SearchResultView: View {
+    
+    var store: StoreOf<SearchFeature>
+    
+    init() {
+        store = Store(initialState: SearchFeature.State()) {
+            SearchFeature()
+        }
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            SearchPlaceholder()
+        }
     }
 }
 

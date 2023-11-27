@@ -7,6 +7,10 @@
 
 import Foundation
 
+public struct PeopleEnvelope: Decodable {
+    public let results: [Person]
+}
+
 public struct Person: Decodable, Hashable {
     
     public let personID: Int

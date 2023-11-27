@@ -8,11 +8,16 @@
 import SwiftUI
 import TMDBLibrary
 
-struct SearchHeader: View {
+struct SearchHeader<Back: View>: View {
+    
+    var back: Back
+    init(back: () -> Back) {
+        self.back = back()
+    }
+    
     var body: some View {
         HStack(spacing: 12) {
-            Image("back")
-                .resize(width: 32, height: 32)
+            back
             HStack {
                 Image("magnifying-glass")
                     .resize(width: 16, height: 16)
@@ -33,9 +38,12 @@ struct SearchHeader: View {
 }
 
 #Preview {
-    SearchHeader()
-        .background {
-            Color.richBlack.background(.regularMaterial)
-        }
-        .environment(\.colorScheme, .dark)
+    SearchHeader {
+        Image("back")
+            .resize(width: 32, height: 32)
+    }
+    .background {
+        Color.richBlack.background(.regularMaterial)
+    }
+    .environment(\.colorScheme, .dark)
 }

@@ -13,9 +13,11 @@ enum Route {
     case nowPlaying
     case popularTvShows
     case topMovies
+    case searchMovies
     case genres
     case trendingMovies(String)
     case popularPerson
+    case searchPeople
     
     internal var requestProperties: (method: Method, path: String) {
         switch self {
@@ -24,7 +26,9 @@ enum Route {
         case .nowPlaying:
             return (.GET, "/3/movie/now_playing")
         case .topMovies:
-            return (.GET, "3/movie/top_rated")
+            return (.GET, "/3/movie/top_rated")
+        case .searchMovies:
+            return (.GET, "/3/search/movie")
         case .popularTvShows:
             return (.GET, "/3/tv/popular")
         case .genres:
@@ -33,6 +37,8 @@ enum Route {
             return (.GET, "/3/trending/movie/\(timeWindow)")
         case .popularPerson:
             return (.GET, "/3/person/popular")
+        case .searchPeople:
+            return (.GET, "/3/search/person")
         }
     }
 }

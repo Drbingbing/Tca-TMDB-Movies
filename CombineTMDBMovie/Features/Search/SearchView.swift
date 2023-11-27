@@ -6,14 +6,29 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+import TMDBLibrary
 
 struct SearchView: View {
+    
+    var store: StoreOf<SearchFeature>
+    
+    init(store: StoreOf<SearchFeature>) {
+        self.store = store
+    }
+    
     var body: some View {
         ZStack(alignment: .top) {
-            ScrollView {
-                
+            SearchPlaceholder()
+                .padding(.top, 48)
+            SearchHeader {
+                Image("back")
+                    .resize(width: 32, height: 32)
+                    .button(
+                        action: { store.send(.closeSearch) },
+                        style: .scaled
+                    )
             }
-            SearchHeader()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
@@ -23,6 +38,7 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView()
-        .environment(\.colorScheme, .dark)
+    SearchView(
+        store: Store(initialState: SearchFeature.State()) { SearchFeature() }
+    ).environment(\.colorScheme, .dark)
 }

@@ -54,6 +54,18 @@ public struct TMDBService: TMDBServiceProtocol {
         try await request(.topMovies, query: ["page": page])
     }
     
+    public func searchMovie(query: String) async throws -> MovieEnvelope {
+        /**
+         'https://api.themoviedb.org/3/search/movie?query=%E6%84%9B%E6%83%85&include_adult=false&language=en-US&page=1'
+         */
+        let params: [String: Any] = [
+            "query": query,
+            "include_adult": false,
+            "page": 1
+        ]
+        return try await request(.searchMovies, query: params)
+    }
+    
     public func genres() async throws -> [Genre] {
         struct GenreResult: Decodable {
             public let genres: [Genre]
@@ -68,11 +80,17 @@ public struct TMDBService: TMDBServiceProtocol {
     }
     
     public func popularPeople(page: Int) async throws -> [Person] {
-        struct PersonResult: Decodable {
-            public let results: [Person]
-        }
-        
-        let result: PersonResult = try await request(.popularPerson, query: ["page": page])
+        let result: PeopleEnvelope = try await request(.popularPerson, query: ["page": page])
+        return result.results
+    }
+    
+    public func searchPeople(query: String) async throws -> [Person] {
+        let params: [String: Any] = [
+            "query": query,
+            "include_adult": false,
+            "page": 1
+        ]
+        let result: PeopleEnvelope = try await request(.searchPeople, query: params)
         return result.results
     }
 }

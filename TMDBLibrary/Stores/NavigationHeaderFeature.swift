@@ -13,6 +13,7 @@ public struct NavigationHeaderFeature: Reducer {
     public struct State: Equatable {
         public var isProcessingMirror: Bool = false
         @PresentationState public var screenMirror: ScreenMirrorFeature.State?
+        @PresentationState public var searchState: SearchFeature.State?
         
         public init() {}
     }
@@ -21,6 +22,8 @@ public struct NavigationHeaderFeature: Reducer {
         case screenMirrorButtonTapped(Bool)
         case screenMirrorResponsed(Bool)
         case showScreenMirror(PresentationAction<ScreenMirrorFeature.Action>)
+        case showSearch(PresentationAction<SearchFeature.Action>)
+        case showSearchButtonTapped
     }
     
     public init() {}
@@ -29,6 +32,9 @@ public struct NavigationHeaderFeature: Reducer {
         Reduce(self.core)
             .ifLet(\.$screenMirror, action: /Action.showScreenMirror) {
                 ScreenMirrorFeature()
+            }
+            .ifLet(\.$searchState, action: /Action.showSearch) {
+                SearchFeature()
             }
     }
     
@@ -40,6 +46,9 @@ public struct NavigationHeaderFeature: Reducer {
                 try await Task.sleep(for: .seconds(1))
                 await send(.screenMirrorResponsed(false))
             }
+        case .showSearchButtonTapped:
+            state.searchState = .init()
+            return .none
         case .screenMirrorResponsed:
             state.isProcessingMirror = false
             state.screenMirror = .init()
@@ -48,6 +57,11 @@ public struct NavigationHeaderFeature: Reducer {
             state.screenMirror = nil
             return .none
         case .showScreenMirror:
+            return .none
+        case .showSearch(.presented(.closeSearch)):
+            state.searchState = nil
+            return .none
+        case .showSearch:
             return .none
         }
     }
