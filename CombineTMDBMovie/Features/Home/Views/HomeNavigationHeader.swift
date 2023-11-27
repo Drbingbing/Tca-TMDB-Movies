@@ -7,8 +7,17 @@
 
 import SwiftUI
 import TMDBLibrary
+import ComposableArchitecture
 
 struct HomeNavigationHeader: View {
+    
+    var store: StoreOf<NavigationHeaderFeature>
+    
+    init() {
+        store = Store(initialState: NavigationHeaderFeature.State()) {
+            NavigationHeaderFeature()
+        }
+    }
     
     var body: some View {
         VStack(spacing: 12) {
@@ -16,9 +25,12 @@ struct HomeNavigationHeader: View {
                 Text("講話大舌頭，歡迎你")
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
-                Image("chrome-cast")
-                    .asThumbnail()
-                    .button(style: .scaled)
+                WithViewStore(store, observe: \.isProcessingMirror) { viewStore in
+                    ProgressButton(viewStore.binding(send: { .screenMirrorButtonTapped($0) })) {
+                        Image("chrome-cast")
+                            .asThumbnail()
+                    }
+                }
                 Image("magnifying-glass")
                     .asThumbnail()
                     .button(style: .scaled)
@@ -29,8 +41,19 @@ struct HomeNavigationHeader: View {
         .padding(.horizontal, 12)
         .padding(.bottom, 8)
         .background {
-            Color.blackChocolate
+            Color.richBlack
                 .overlay(.regularMaterial)
+        }
+        .sheet(
+            store: store.scope(
+                state: \.$screenMirror,
+                action: { .showScreenMirror($0) }
+            )
+        ) { screenMirrorFeature in
+            ScreenMirrorView(store: screenMirrorFeature)
+                .presentationDetents([.medium])
+                .presentationBackground(Color.primaryGray)
+                .environment(\.colorScheme, .dark)
         }
     }
 }

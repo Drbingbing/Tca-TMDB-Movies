@@ -121,5 +121,5 @@ private extension View {
 #Preview {
     HomeSortPagerView()
         .padding(12)
-        .background(.blackChocolate)
+        .background(.richBlack)
 }

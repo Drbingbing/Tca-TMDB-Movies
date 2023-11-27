@@ -21,7 +21,7 @@ struct TrendingView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
-            Color.blackChocolate
+            Color.richBlack
                 .overlay(.regularMaterial)
         }
     }

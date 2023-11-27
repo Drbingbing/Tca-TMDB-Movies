@@ -50,10 +50,6 @@ struct TrendingList: View {
                     WithViewStore(store, observe: \.trendingMovies) { viewStore in
                         ForEach(viewStore.state, id: \.movieID) { movie in
                             TrendingRow(movie: movie)
-                                .button(
-                                    action: { selectedSort = "即將上線" },
-                                    style: .scaled
-                                )
                         }
                     }
                 }

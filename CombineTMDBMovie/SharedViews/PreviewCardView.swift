@@ -23,7 +23,7 @@ struct PreviewCardView: View {
             if let image = image {
                 KFImage(URL(string: posterBaseURL + image))
                     .placeholder { _ in
-                        Color.blackChocolate
+                        Color.richBlack
                             .background(.regularMaterial)
                             .frame(minWidth: 80, minHeight: 160)
                     }

@@ -65,6 +65,12 @@
 		3085EC6D2B107D3300DA50AA /* TVsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC6C2B107D3300DA50AA /* TVsClient.swift */; };
 		3085EC6F2B107D9600DA50AA /* TvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC6E2B107D9600DA50AA /* TvShow.swift */; };
 		3085EC712B1081EB00DA50AA /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC702B1081EB00DA50AA /* SharedFunctions.swift */; };
+		3085EC732B1422CA00DA50AA /* NavigationHeaderFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC722B1422CA00DA50AA /* NavigationHeaderFeature.swift */; };
+		3085EC752B1426FD00DA50AA /* ScreenMirrorFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC742B1426FD00DA50AA /* ScreenMirrorFeature.swift */; };
+		3085EC782B14288900DA50AA /* CasePaths in Frameworks */ = {isa = PBXBuildFile; productRef = 3085EC772B14288900DA50AA /* CasePaths */; };
+		3085EC7A2B14289800DA50AA /* CasePaths in Frameworks */ = {isa = PBXBuildFile; productRef = 3085EC792B14289800DA50AA /* CasePaths */; };
+		3085EC7C2B142D2300DA50AA /* ScreenMirrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC7B2B142D2300DA50AA /* ScreenMirrorView.swift */; };
+		3085EC7E2B1433F000DA50AA /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC7D2B1433F000DA50AA /* ProgressButton.swift */; };
 		4440A05C2B11C2C900884A89 /* HomeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A05B2B11C2C900884A89 /* HomeViews.swift */; };
 		4440A05F2B11CBB500884A89 /* HomeNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A05E2B11CBB500884A89 /* HomeNavigationHeader.swift */; };
 		4440A0612B11CF3900884A89 /* RecommendMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A0602B11CF3900884A89 /* RecommendMovieView.swift */; };
@@ -231,6 +237,10 @@
 		3085EC6C2B107D3300DA50AA /* TVsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVsClient.swift; sourceTree = "<group>"; };
 		3085EC6E2B107D9600DA50AA /* TvShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShow.swift; sourceTree = "<group>"; };
 		3085EC702B1081EB00DA50AA /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
+		3085EC722B1422CA00DA50AA /* NavigationHeaderFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeaderFeature.swift; sourceTree = "<group>"; };
+		3085EC742B1426FD00DA50AA /* ScreenMirrorFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenMirrorFeature.swift; sourceTree = "<group>"; };
+		3085EC7B2B142D2300DA50AA /* ScreenMirrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenMirrorView.swift; sourceTree = "<group>"; };
+		3085EC7D2B1433F000DA50AA /* ProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		4440A05B2B11C2C900884A89 /* HomeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViews.swift; sourceTree = "<group>"; };
 		4440A05E2B11CBB500884A89 /* HomeNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationHeader.swift; sourceTree = "<group>"; };
 		4440A0602B11CF3900884A89 /* RecommendMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendMovieView.swift; sourceTree = "<group>"; };
@@ -284,6 +294,7 @@
 				307A66232B0F588B0023E980 /* DependenciesMacros in Frameworks */,
 				30660AE02B0C966F000FD0E2 /* TMDBApi.framework in Frameworks */,
 				307A66212B0F588B0023E980 /* Dependencies in Frameworks */,
+				3085EC782B14288900DA50AA /* CasePaths in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +315,7 @@
 				307A661F2B0F58700023E980 /* DependenciesMacros in Frameworks */,
 				30660ACE2B0C946B000FD0E2 /* TMDBLibrary.framework in Frameworks */,
 				307A66162B0F54090023E980 /* ComposableArchitecture in Frameworks */,
+				3085EC7A2B14289800DA50AA /* CasePaths in Frameworks */,
 				30660A8E2B0C6214000FD0E2 /* TMDBApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +435,8 @@
 				4440A0722B1213B100884A89 /* RecommendMovieFeature.swift */,
 				4440A07A2B13173900884A89 /* TopRatedMoviesFeature.swift */,
 				4440A08D2B135D7A00884A89 /* TrendingFeature.swift */,
+				3085EC722B1422CA00DA50AA /* NavigationHeaderFeature.swift */,
+				3085EC742B1426FD00DA50AA /* ScreenMirrorFeature.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -481,6 +495,8 @@
 				30660AF92B0CAC11000FD0E2 /* PreviewCardView.swift */,
 				4440A0622B11D52E00884A89 /* PlayButton.swift */,
 				4440A0642B11D54000884A89 /* AddFavoriteButton.swift */,
+				3085EC7B2B142D2300DA50AA /* ScreenMirrorView.swift */,
+				3085EC7D2B1433F000DA50AA /* ProgressButton.swift */,
 			);
 			path = SharedViews;
 			sourceTree = "<group>";
@@ -716,6 +732,7 @@
 				307A66172B0F581C0023E980 /* Kingfisher */,
 				307A66202B0F588B0023E980 /* Dependencies */,
 				307A66222B0F588B0023E980 /* DependenciesMacros */,
+				3085EC772B14288900DA50AA /* CasePaths */,
 			);
 			productName = TMDBLibrary;
 			productReference = 30660AB92B0C946B000FD0E2 /* TMDBLibrary.framework */;
@@ -761,6 +778,7 @@
 				307A66152B0F54090023E980 /* ComposableArchitecture */,
 				307A661C2B0F58700023E980 /* Dependencies */,
 				307A661E2B0F58700023E980 /* DependenciesMacros */,
+				3085EC792B14289800DA50AA /* CasePaths */,
 			);
 			productName = CombineTMDBMovie;
 			productReference = 3071A9932B0C467A007405B4 /* CombineTMDBMovie.app */;
@@ -854,6 +872,7 @@
 				30660A712B0C615F000FD0E2 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				30660AFB2B0CAC57000FD0E2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				307A661B2B0F58700023E980 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				3085EC762B14288900DA50AA /* XCRemoteSwiftPackageReference "swift-case-paths" */,
 			);
 			productRefGroup = 3071A9942B0C467A007405B4 /* Products */;
 			projectDirPath = "";
@@ -963,7 +982,9 @@
 				4440A06A2B12064500884A89 /* NowPlayingFeature.swift in Sources */,
 				4440A0752B12210800884A89 /* GenresClient.swift in Sources */,
 				3067940E2B0EE916004C7BF9 /* Button+Extensions.swift in Sources */,
+				3085EC752B1426FD00DA50AA /* ScreenMirrorFeature.swift in Sources */,
 				30660B002B0EE5E9000FD0E2 /* Appearance.swift in Sources */,
+				3085EC732B1422CA00DA50AA /* NavigationHeaderFeature.swift in Sources */,
 				4440A0732B1213B100884A89 /* RecommendMovieFeature.swift in Sources */,
 				4440A08E2B135D7A00884A89 /* TrendingFeature.swift in Sources */,
 				4440A07B2B13173900884A89 /* TopRatedMoviesFeature.swift in Sources */,
@@ -1008,11 +1029,13 @@
 				4440A0632B11D52E00884A89 /* PlayButton.swift in Sources */,
 				4440A0682B12061B00884A89 /* NowPlayingMoviesView.swift in Sources */,
 				3071A9992B0C467A007405B4 /* RootTabBarView.swift in Sources */,
+				3085EC7C2B142D2300DA50AA /* ScreenMirrorView.swift in Sources */,
 				3071A9972B0C467A007405B4 /* CombineTMDBMovieApp.swift in Sources */,
 				4440A08A2B13362100884A89 /* TrendingSortPagersView.swift in Sources */,
 				4440A05F2B11CBB500884A89 /* HomeNavigationHeader.swift in Sources */,
 				4440A0612B11CF3900884A89 /* RecommendMovieView.swift in Sources */,
 				4440A07D2B13180E00884A89 /* TopRatedMoviesView.swift in Sources */,
+				3085EC7E2B1433F000DA50AA /* ProgressButton.swift in Sources */,
 				4440A06D2B120AAC00884A89 /* HomeSection+Modifier.swift in Sources */,
 				4440A05C2B11C2C900884A89 /* HomeViews.swift in Sources */,
 				4440A0882B13353800884A89 /* TrendingHeader.swift in Sources */,
@@ -1652,6 +1675,14 @@
 				minimumVersion = 1.1.1;
 			};
 		};
+		3085EC762B14288900DA50AA /* XCRemoteSwiftPackageReference "swift-case-paths" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-case-paths.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1704,6 +1735,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 307A661B2B0F58700023E980 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
 			productName = DependenciesMacros;
+		};
+		3085EC772B14288900DA50AA /* CasePaths */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3085EC762B14288900DA50AA /* XCRemoteSwiftPackageReference "swift-case-paths" */;
+			productName = CasePaths;
+		};
+		3085EC792B14289800DA50AA /* CasePaths */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3085EC762B14288900DA50AA /* XCRemoteSwiftPackageReference "swift-case-paths" */;
+			productName = CasePaths;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
