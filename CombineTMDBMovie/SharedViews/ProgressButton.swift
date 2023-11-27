@@ -19,7 +19,7 @@ struct ProgressButton<Label: View>: View {
     
     var body: some View {
         if value {
-            ProgressView().frame(width: 28, height: 28)
+            ProgressView().frame(width: 26, height: 26)
         } else {
             label
                 .button(action: { value = true }, style: .scaled)

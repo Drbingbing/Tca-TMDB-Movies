@@ -29,7 +29,7 @@ struct RootTabBarView: View {
                         TrendingView()
                             .trendingTab()
                     case .actors:
-                        Text("actors")
+                        ActorsView()
                             .actorTab()
                     }
                 }

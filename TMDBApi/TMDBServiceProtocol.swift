@@ -33,6 +33,9 @@ public protocol TMDBServiceProtocol {
     
     /// Get the trending movies on TMDB.
     func trendingMovies() async throws -> MovieEnvelope
+    
+    /// Get a list of people ordered by popularity.
+    func popularPeople(page: Int) async throws -> [Person]
 }
 
 extension TMDBServiceProtocol {

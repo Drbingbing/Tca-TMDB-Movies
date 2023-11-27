@@ -66,4 +66,13 @@ public struct TMDBService: TMDBServiceProtocol {
     public func trendingMovies() async throws -> MovieEnvelope {
         try await request(.trendingMovies("day"), query: [:])
     }
+    
+    public func popularPeople(page: Int) async throws -> [Person] {
+        struct PersonResult: Decodable {
+            public let results: [Person]
+        }
+        
+        let result: PersonResult = try await request(.popularPerson, query: ["page": page])
+        return result.results
+    }
 }
