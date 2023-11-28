@@ -52,6 +52,16 @@ extension SearchClient: DependencyKey {
                         posterPath: "/7wYG2Rowz7TwOosomGBvuqLAfe5.jpg",
                         backdropPath: "/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
                         releaseDate: "2023-07-19"
+                    ),
+                    Movie(
+                        movieID: 901362,
+                        overview: "克里斯多夫諾蘭自編自導的《奧本海默》是一部用IMAX攝影機拍攝的史詩驚悚片，觀眾將看到一個謎一般的男人是如何陷入一個自相矛盾的困境，他為了拯救這個世界，必須先毀滅它。",
+                        title: "魔髮精靈：樂團在一起",
+                        originalTitle: "Oppenheimer",
+                        genreIDs: [18, 36],
+                        posterPath: "/4PPTeLVBrVRK71iU551N1OKvFtF.jpg",
+                        backdropPath: "/xgGGinKRL8xeRkaAR9RMbtyk60y.jpg",
+                        releaseDate: "2023-10-12"
                     )
                 ]
             },

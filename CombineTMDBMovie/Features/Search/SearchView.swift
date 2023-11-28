@@ -19,15 +19,35 @@ struct SearchView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            SearchPlaceholder()
-                .padding(.top, 48)
-            SearchHeader {
-                Image("back")
-                    .resize(width: 32, height: 32)
-                    .button(
-                        action: { store.send(.closeSearch) },
-                        style: .scaled
-                    )
+            WithViewStore(store, observe: { $0 }) { viewStore in
+                if viewStore.searchText.isEmpty {
+                    SearchPlaceholder()
+                        .padding(.top, 48)
+                }
+                else if viewStore.isSearchingMovie {
+                    VStack {
+                        Spacer()
+                        ProgressView().frame(width: 32, height: 32)
+                        Spacer()
+                    }
+                    .padding(.top, 48)
+                }
+                else if !viewStore.searchedMovies.isEmpty {
+                    SearchMovieResultView(movies: viewStore.searchedMovies)
+                        .padding(.top, 48)
+                }
+            }
+            WithViewStore(store, observe: \.searchText) { viewStore in
+                SearchHeader(
+                    searchText: viewStore.binding(get: { $0 }, send: { .searchTextChanged($0) })
+                ) {
+                    Image("back")
+                        .resize(width: 32, height: 32)
+                        .button(
+                            action: { store.send(.closeSearch) },
+                            style: .scaled
+                        )
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

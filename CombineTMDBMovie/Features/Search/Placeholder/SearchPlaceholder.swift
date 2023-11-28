@@ -28,7 +28,7 @@ struct SearchPlaceholder: View {
             }
             
             WithViewStore(store, observe: \.topRatedMovies) { viewStore in
-                SearchMoviesPlaceholder(movies: viewStore.state)
+                SearchMovieResultView(movies: viewStore.state)
             }
         }
     }

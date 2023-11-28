@@ -1,5 +1,5 @@
 //
-//  SearchMoviesPlaceholder.swift
+//  SearchMovieResultView.swift
 //  CombineTMDBMovie
 //
 //  Created by Bing Bing on 2023/11/27.
@@ -10,27 +10,32 @@ import Kingfisher
 import TMDBApi
 import ComposableArchitecture
 
-struct SearchMoviesPlaceholder: View {
+struct SearchMovieResultView: View {
     
     var movies: [Movie]
+    
+    @State private var offset: CGPoint = .zero
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("節目與電影推薦")
                 .padding(.horizontal, 10)
-            ScrollView(showsIndicators: false) {
+            OffsetObservingScrollView(offset: $offset) {
                 ForEach(movies, id: \.movieID) { movie in
-                    SearchMoviesPlaceholderRow(
+                    SearchMovieResultRow(
                         path: movie.backdropPath,
                         title: movie.title
                     )
                 }
             }
+            .onChange(of: offset) { oldValue, newValue in
+                print(newValue)
+            }
         }
     }
 }
 
-private struct SearchMoviesPlaceholderRow: View {
+private struct SearchMovieResultRow: View {
     
     @Dependency(\.posterBaseURL) var posterBaseURL
     
