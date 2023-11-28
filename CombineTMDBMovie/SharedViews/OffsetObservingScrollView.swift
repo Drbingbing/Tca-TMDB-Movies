@@ -29,18 +29,20 @@ struct OffsetObservingScrollView<Content: View>: View {
     
     var body: some View {
         ScrollView(axes, showsIndicators: showIndicators) {
-            PositionObservingView(
-                coordinateSpace: .named(coordinateSpaceName),
-                position: Binding(
-                    get: { offset },
-                    set: { newOffset in
-                        offset = CGPoint(
-                            x: -newOffset.x,
-                            y: -newOffset.y
-                        )
-                    }
+            ZStack(alignment: .top) {
+                PositionObservingView(
+                    coordinateSpace: .named(coordinateSpaceName),
+                    position: Binding(
+                        get: { offset },
+                        set: { newOffset in
+                            offset = CGPoint(
+                                x: -newOffset.x,
+                                y: -newOffset.y
+                            )
+                        }
+                    )
                 )
-            ) {
+                
                 content
             }
         }
@@ -48,31 +50,26 @@ struct OffsetObservingScrollView<Content: View>: View {
     }
 }
 
-private struct PositionObservingView<Content: View>: View {
+private struct PositionObservingView: View {
     var coordinateSpace: CoordinateSpace
     
     @Binding var position: CGPoint
-    var content: Content
     
-    init(coordinateSpace: CoordinateSpace, position: Binding<CGPoint>, @ViewBuilder content: () -> Content) {
+    init(coordinateSpace: CoordinateSpace, position: Binding<CGPoint>) {
         self.coordinateSpace = coordinateSpace
         _position = position
-        self.content = content()
     }
     
     var body: some View {
-        content
-            .background {
-                GeometryReader { geometry in
-                    Color.clear.preference(
-                        key: PreferenceKey.self,
-                        value: geometry.frame(in: .named(coordinateSpace)).origin
-                    )
-                }
-            }
-            .onPreferenceChange(PreferenceKey.self) { position in
-                self.position = position
-            }
+        GeometryReader { geometry in
+            Color.clear.preference(
+                key: PreferenceKey.self,
+                value: geometry.frame(in: .named(coordinateSpace)).origin
+            )
+        }
+        .onPreferenceChange(PreferenceKey.self) { position in
+            self.position = position
+        }
     }
 }
 

@@ -29,7 +29,7 @@ struct SearchMovieResultView: View {
                 }
             }
             .onChange(of: offset) { oldValue, newValue in
-                print(newValue)
+                print("fssffdsfdfds")
             }
         }
     }

@@ -39,7 +39,6 @@ public struct SearchFeature: Reducer {
     
     public var body: some Reducer<State, Action> {
         Reduce(self.core)
-            ._printChanges()
     }
     
     func core(state: inout State, action: Action) -> Effect<Action> {

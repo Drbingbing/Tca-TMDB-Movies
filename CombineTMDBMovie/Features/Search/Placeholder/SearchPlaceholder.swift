@@ -13,6 +13,7 @@ import TMDBApi
 struct SearchPlaceholder: View {
     
     var store: StoreOf<SearchFeature>
+    @State var offset: CGPoint = .zero
     
     init() {
         store = Store(initialState: SearchFeature.State()) {
@@ -22,14 +23,19 @@ struct SearchPlaceholder: View {
     }
     
     var body: some View {
-        ScrollView {
-            WithViewStore(store, observe: \.latestPeople) { viewStore in
-                SearchPeoplePlaceholder(people: viewStore.state)
+        OffsetObservingScrollView(offset: $offset) {
+            VStack(spacing: 0) {
+                WithViewStore(store, observe: \.latestPeople) { viewStore in
+                    SearchPeoplePlaceholder(people: viewStore.state)
+                }
+                
+                WithViewStore(store, observe: \.topRatedMovies) { viewStore in
+                    SearchMovieResultView(movies: viewStore.state)
+                }
             }
-            
-            WithViewStore(store, observe: \.topRatedMovies) { viewStore in
-                SearchMovieResultView(movies: viewStore.state)
-            }
+        }
+        .onChange(of: offset) { oldValue, newValue in
+            print(newValue)
         }
     }
 }
