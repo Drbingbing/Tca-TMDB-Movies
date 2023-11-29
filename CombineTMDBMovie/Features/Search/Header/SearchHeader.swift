@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TMDBLibrary
+import SwiftUIIntrospect
 
 struct SearchHeader<Back: View>: View {
     
@@ -15,10 +16,9 @@ struct SearchHeader<Back: View>: View {
     }
     
     @Binding var searchText: String
-    
-    @FocusState private var focusedField: FocusField?
-    
+     
     var back: Back
+    
     init(
         searchText: Binding<String>,
         back: () -> Back
@@ -38,7 +38,6 @@ struct SearchHeader<Back: View>: View {
                     TextField("搜尋人物、節目、電影⋯⋯", text: $searchText)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
-                        .focused($focusedField, equals: .search)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
@@ -50,9 +49,6 @@ struct SearchHeader<Back: View>: View {
             .padding(.leading, 10)
             .padding(.trailing, 20)
             Spacer()
-        }
-        .onTapGesture {
-            focusedField = nil
         }
     }
 }

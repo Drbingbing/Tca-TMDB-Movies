@@ -80,8 +80,9 @@
 		3085EC902B14496B00DA50AA /* PersonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC8F2B14496B00DA50AA /* PersonRow.swift */; };
 		3085EC932B14671C00DA50AA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC922B14671C00DA50AA /* SearchView.swift */; };
 		3085EC962B14674300DA50AA /* SearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC952B14674300DA50AA /* SearchHeader.swift */; };
-		3085EC992B146B3B00DA50AA /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC982B146B3B00DA50AA /* SearchResultView.swift */; };
-		3085EC9D2B15BA8700DA50AA /* OffsetObservingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC9C2B15BA8700DA50AA /* OffsetObservingScrollView.swift */; };
+		3085EC9F2B16C1B400DA50AA /* ScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EC9E2B16C1B400DA50AA /* ScrollViewDelegate.swift */; };
+		3085ECA22B16C57500DA50AA /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 3085ECA12B16C57500DA50AA /* SwiftUIIntrospect */; };
+		3085ECA42B171A3800DA50AA /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085ECA32B171A3800DA50AA /* TextFieldDelegate.swift */; };
 		4440A05C2B11C2C900884A89 /* HomeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A05B2B11C2C900884A89 /* HomeViews.swift */; };
 		4440A05F2B11CBB500884A89 /* HomeNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A05E2B11CBB500884A89 /* HomeNavigationHeader.swift */; };
 		4440A0612B11CF3900884A89 /* RecommendMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4440A0602B11CF3900884A89 /* RecommendMovieView.swift */; };
@@ -266,8 +267,8 @@
 		3085EC8F2B14496B00DA50AA /* PersonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRow.swift; sourceTree = "<group>"; };
 		3085EC922B14671C00DA50AA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3085EC952B14674300DA50AA /* SearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeader.swift; sourceTree = "<group>"; };
-		3085EC982B146B3B00DA50AA /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
-		3085EC9C2B15BA8700DA50AA /* OffsetObservingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetObservingScrollView.swift; sourceTree = "<group>"; };
+		3085EC9E2B16C1B400DA50AA /* ScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDelegate.swift; sourceTree = "<group>"; };
+		3085ECA32B171A3800DA50AA /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		4440A05B2B11C2C900884A89 /* HomeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViews.swift; sourceTree = "<group>"; };
 		4440A05E2B11CBB500884A89 /* HomeNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationHeader.swift; sourceTree = "<group>"; };
 		4440A0602B11CF3900884A89 /* RecommendMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendMovieView.swift; sourceTree = "<group>"; };
@@ -349,6 +350,7 @@
 				307A66162B0F54090023E980 /* ComposableArchitecture in Frameworks */,
 				3085EC7A2B14289800DA50AA /* CasePaths in Frameworks */,
 				30660A8E2B0C6214000FD0E2 /* TMDBApi.framework in Frameworks */,
+				3085ECA22B16C57500DA50AA /* SwiftUIIntrospect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +538,8 @@
 				4440A0642B11D54000884A89 /* AddFavoriteButton.swift */,
 				3085EC7B2B142D2300DA50AA /* ScreenMirrorView.swift */,
 				3085EC7D2B1433F000DA50AA /* ProgressButton.swift */,
-				3085EC9C2B15BA8700DA50AA /* OffsetObservingScrollView.swift */,
+				3085EC9E2B16C1B400DA50AA /* ScrollViewDelegate.swift */,
+				3085ECA32B171A3800DA50AA /* TextFieldDelegate.swift */,
 			);
 			path = SharedViews;
 			sourceTree = "<group>";
@@ -647,7 +650,6 @@
 			isa = PBXGroup;
 			children = (
 				4473F3802B147C6400193DD4 /* Placeholder */,
-				3085EC972B146B2C00DA50AA /* SearchResult */,
 				3085EC942B14673900DA50AA /* Header */,
 				3085EC922B14671C00DA50AA /* SearchView.swift */,
 			);
@@ -660,14 +662,6 @@
 				3085EC952B14674300DA50AA /* SearchHeader.swift */,
 			);
 			path = Header;
-			sourceTree = "<group>";
-		};
-		3085EC972B146B2C00DA50AA /* SearchResult */ = {
-			isa = PBXGroup;
-			children = (
-				3085EC982B146B3B00DA50AA /* SearchResultView.swift */,
-			);
-			path = SearchResult;
 			sourceTree = "<group>";
 		};
 		4440A05A2B11C28000884A89 /* Home */ = {
@@ -891,6 +885,7 @@
 				307A661C2B0F58700023E980 /* Dependencies */,
 				307A661E2B0F58700023E980 /* DependenciesMacros */,
 				3085EC792B14289800DA50AA /* CasePaths */,
+				3085ECA12B16C57500DA50AA /* SwiftUIIntrospect */,
 			);
 			productName = CombineTMDBMovie;
 			productReference = 3071A9932B0C467A007405B4 /* CombineTMDBMovie.app */;
@@ -985,6 +980,7 @@
 				30660AFB2B0CAC57000FD0E2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				307A661B2B0F58700023E980 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 				3085EC762B14288900DA50AA /* XCRemoteSwiftPackageReference "swift-case-paths" */,
+				3085ECA02B16C57500DA50AA /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = 3071A9942B0C467A007405B4 /* Products */;
 			projectDirPath = "";
@@ -1136,7 +1132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				30660AF82B0CA6CD000FD0E2 /* UpcomingMoviesView.swift in Sources */,
-				3085EC992B146B3B00DA50AA /* SearchResultView.swift in Sources */,
 				4440A0912B135FA200884A89 /* TrendingList.swift in Sources */,
 				4440A07F2B131F2B00884A89 /* HomeSortPagerView.swift in Sources */,
 				4440A0702B120EC000884A89 /* MoviesView.swift in Sources */,
@@ -1158,10 +1153,11 @@
 				4440A05F2B11CBB500884A89 /* HomeNavigationHeader.swift in Sources */,
 				4473F3862B14B29A00193DD4 /* SearchMovieResultView.swift in Sources */,
 				4440A0612B11CF3900884A89 /* RecommendMovieView.swift in Sources */,
+				3085ECA42B171A3800DA50AA /* TextFieldDelegate.swift in Sources */,
 				4440A07D2B13180E00884A89 /* TopRatedMoviesView.swift in Sources */,
+				3085EC9F2B16C1B400DA50AA /* ScrollViewDelegate.swift in Sources */,
 				3085EC7E2B1433F000DA50AA /* ProgressButton.swift in Sources */,
 				4440A06D2B120AAC00884A89 /* HomeSection+Modifier.swift in Sources */,
-				3085EC9D2B15BA8700DA50AA /* OffsetObservingScrollView.swift in Sources */,
 				4440A05C2B11C2C900884A89 /* HomeViews.swift in Sources */,
 				3085EC962B14674300DA50AA /* SearchHeader.swift in Sources */,
 				3085EC812B143EB000DA50AA /* ActorsView.swift in Sources */,
@@ -1811,6 +1807,14 @@
 				minimumVersion = 1.1.1;
 			};
 		};
+		3085ECA02B16C57500DA50AA /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/swiftui-introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1873,6 +1877,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3085EC762B14288900DA50AA /* XCRemoteSwiftPackageReference "swift-case-paths" */;
 			productName = CasePaths;
+		};
+		3085ECA12B16C57500DA50AA /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3085ECA02B16C57500DA50AA /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			productName = SwiftUIIntrospect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

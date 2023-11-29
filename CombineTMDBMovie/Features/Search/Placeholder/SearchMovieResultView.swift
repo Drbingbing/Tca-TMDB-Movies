@@ -20,7 +20,7 @@ struct SearchMovieResultView: View {
         VStack(alignment: .leading) {
             Text("節目與電影推薦")
                 .padding(.horizontal, 10)
-            OffsetObservingScrollView(offset: $offset) {
+            ScrollView {
                 ForEach(movies, id: \.movieID) { movie in
                     SearchMovieResultRow(
                         path: movie.backdropPath,

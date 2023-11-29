@@ -12,37 +12,33 @@ import TMDBApi
 
 struct SearchPlaceholder: View {
     
-    var store: StoreOf<SearchFeature>
-    @State var offset: CGPoint = .zero
+    var topRatedMovies: [Movie]
+    var popularPeople: [Person]
+    @State private var offset: CGPoint = .zero
     
-    init() {
-        store = Store(initialState: SearchFeature.State()) {
-            SearchFeature()
-        }
-        store.send(.viewInit)
+    init(
+        topRatedMovies: [Movie],
+        popularPeople: [Person]
+    ) {
+        self.topRatedMovies = topRatedMovies
+        self.popularPeople = popularPeople
     }
     
     var body: some View {
-        OffsetObservingScrollView(offset: $offset) {
+        ScrollView {
             VStack(spacing: 0) {
-                WithViewStore(store, observe: \.latestPeople) { viewStore in
-                    SearchPeoplePlaceholder(people: viewStore.state)
-                }
+                SearchPeoplePlaceholder(people: popularPeople)
                 
-                WithViewStore(store, observe: \.topRatedMovies) { viewStore in
-                    SearchMovieResultView(movies: viewStore.state)
-                }
+                SearchMovieResultView(movies: topRatedMovies)
             }
         }
-        .onChange(of: offset) { oldValue, newValue in
-            print(newValue)
-        }
+        .dismissKeyboardWhenDeceratingIsBegin()
     }
 }
 
 
 #Preview {
-    SearchPlaceholder()
+    SearchPlaceholder(topRatedMovies: [], popularPeople: [])
         .background {
             Color.richBlack.ignoresSafeArea()
         }
